@@ -1,6 +1,21 @@
 # Mojito Input Utility Class
 
-**Descrizione (Italiano)**
+# **Indice / Table of Contents**
+
+-   Italiano
+    -   [Descrione](#descrizione)
+    -   [Come usarla](#come-usarla)
+    -   [Esempi di utilizzo](#esempi-di-utilizzo)
+    -   [Menu interattivo](#menu-interattivo)
+-   English
+    -   [Description](#description)
+    -   [How to use](#how-to-use)
+    -   [Usage examples](#usage-examples)
+    -   [Interactive menu](#interactive-menu)
+
+
+------------------------------------------------------------------------
+## **Descrizione**
 **Mojito** è una classe Java di utilità progettata per semplificare la
 lettura dell'input da tastiera in modo sicuro e strutturato.\
 La classe fornisce metodi statici per leggere dati di tipo:
@@ -14,40 +29,6 @@ La classe fornisce metodi statici per leggere dati di tipo:
 Tutti i metodi gestiscono automaticamente errori di formato e continuano
 a richiedere l'input fino a quando l'utente non inserisce un valore
 valido.
-
-------------------------------------------------------------------------
-
-## **Description (English)**
-
-**Mojito** is a Java utility class designed to simplify safe and
-structured keyboard input handling from the console.\
-It provides static methods to read different data types:
-
--   `int`
--   `float`
--   `double`
--   `String`
--   `boolean` (yes/no)
--   interactive numbered menus
-
-All methods automatically handle format errors and keep prompting until
-correct input is provided.
-
-The class uses a single shared `BufferedReader` for efficient input
-reading.
-
-------------------------------------------------------------------------
-
-# **Indice / Table of Contents**
-
--   Italiano
-    -   [Come usarla](#come-usarla)
-    -   [Esempi di utilizzo](#esempi-di-utilizzo)
-    -   [Menu interattivo](#menu-interattivo)
--   English
-    -   [How to use](#how-to-use)
-    -   [Usage examples](#usage-examples)
-    -   [Interactive menu](#interactive-menu)
 
 ------------------------------------------------------------------------
 
@@ -109,6 +90,26 @@ int scelta = Mojito.menu(
 
 System.out.println("Hai scelto l’opzione n° " + (scelta + 1));
 ```
+
+------------------------------------------------------------------------
+## **Description**
+
+**Mojito** is a Java utility class designed to simplify safe and
+structured keyboard input handling from the console.\
+It provides static methods to read different data types:
+
+-   `int`
+-   `float`
+-   `double`
+-   `String`
+-   `boolean` (yes/no)
+-   interactive numbered menus
+
+All methods automatically handle format errors and keep prompting until
+correct input is provided.
+
+The class uses a single shared `BufferedReader` for efficient input
+reading.
 
 ------------------------------------------------------------------------
 
