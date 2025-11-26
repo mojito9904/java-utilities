@@ -1,189 +1,177 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Mojito{
+/**
+ * Mojito - Classe di utilità per la gestione dell'input da console.
+ * Fornisce metodi per leggere e validare valori di tipo primitivo e stringhe,
+ * oltre a un semplice sistema di menu interattivo.
+ *
+ * Tutti i metodi sono statici: la classe non richiede istanziazione.
+ */
+public class Mojito {
 
-    //////////////////////////////////////////////////
-    ///////////  LETTURA DI UN INTERO (int)
+    /** Lettore condiviso per tutte le operazioni di input */
+    private static final BufferedReader keyboard =
+            new BufferedReader(new InputStreamReader(System.in));
+
+    // ------------------------------------------------------------
+    // Metodo interno:
+    // ------------------------------------------------------------
     /**
-     * Legge da tastiera un numero intero.
-     * Continua a chiedere finché non viene inserito un valore valido.
+     * Legge una riga da tastiera gestendo eventuali errori di I/O.
      *
-     * @param information Messaggio mostrato all'utente
-     * @return numero intero letto
+     * @return la riga letta
      */
-    public static int IntPut(String information ){
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader keyboard = new BufferedReader(input);
-        System.out.println(information);
-
-        int data = 0;
-        boolean error = true;
-
-        while (error) {
+    private static String readLine() {
+        while (true) {
             try {
-                String read = keyboard.readLine();
-                data = Integer.parseInt(read);
-                error = false; // input corretto
-            } catch (Exception e) {
-                System.err.println("Errore: " + e);
-                error = true;
+                return keyboard.readLine();
+            } catch (IOException e) {
+                System.err.println("Errore di input: " + e.getMessage());
             }
         }
-        return data;
     }
 
-
-    //////////////////////////////////////////////////
-    ///////////  LETTURA DI UN FLOAT (float)
+    // ------------------------------------------------------------
+    // INPUT DI INTERI (int)
+    // ------------------------------------------------------------
     /**
-     * Legge da tastiera un numero float.
-     * Ripete la richiesta finché l'input non è valido.
+     * Legge un intero da console con validazione del formato.
      *
-     * @param information Messaggio per l’utente
-     * @return numero float letto
+     * @param message messaggio mostrato all'utente
+     * @return valore intero inserito correttamente
      */
-    public static float FloatPut(String information){
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader keyboard = new BufferedReader(input);
-        System.out.println(information);
+    public static int IntPut(String message) {
+        System.out.println(message);
 
-        float data = 0;
-        boolean error = true;
-
-        while (error) {
+        while (true) {
             try {
-                String read = keyboard.readLine();
-                data = Float.parseFloat(read);
-                error = false;
-            } catch (Exception e) {
-                System.err.println("Errore: " + e);
-                error = true;
+                return Integer.parseInt(readLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Valore non valido. Inserisci un numero intero.");
             }
         }
-        return data;
     }
 
-
-    //////////////////////////////////////////////////
-    ///////////  LETTURA DI UNA STRINGA (String)
+    // ------------------------------------------------------------
+    // INPUT DI FLOAT
+    // ------------------------------------------------------------
     /**
-     * Legge una stringa da tastiera senza ulteriori controlli.
+     * Legge un valore float da console con validazione del formato.
      *
-     * @param information Messaggio mostrato all’utente
-     * @return stringa letta
+     * @param message messaggio mostrato all'utente
+     * @return valore float corretto
      */
-    public static String StringPut(String information){
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader keyboard = new BufferedReader(input);
-        System.out.println(information);
+    public static float FloatPut(String message) {
+        System.out.println(message);
 
-        String data = "";
-        boolean error = true;
-
-        while (error) {
+        while (true) {
             try {
-                data = keyboard.readLine();
-                error = false;
-            } catch (Exception e) {
-                System.err.println("Errore: " + e);
-                error = true;
+                return Float.parseFloat(readLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Valore non valido. Inserisci un numero decimale (float).");
             }
         }
-        return data;
     }
 
-
-    //////////////////////////////////////////////////
-    ///////////  LETTURA DI UN DOUBLE (double)
+    // ------------------------------------------------------------
+    // INPUT DI DOUBLE
+    // ------------------------------------------------------------
     /**
-     * Legge un numero double da tastiera con gestione degli errori.
+     * Legge un valore double da console con validazione del formato.
      *
-     * @param information Messaggio per l’utente
-     * @return numero double letto
+     * @param message messaggio mostrato all'utente
+     * @return valore double corretto
      */
-    public static double DoublePut(String information){
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader keyboard = new BufferedReader(input);
-        System.out.println(information);
+    public static double DoublePut(String message) {
+        System.out.println(message);
 
-        double data = 0;
-        boolean error = true;
-
-        while (error) {
+        while (true) {
             try {
-                String read = keyboard.readLine();
-                data = Double.parseDouble(read);
-                error = false;
-            } catch (Exception e) {
-                System.err.println("Errore: " + e);
-                error = true;
+                return Double.parseDouble(readLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Valore non valido. Inserisci un numero decimale (double).");
             }
         }
-        return data;
     }
 
-
-    //////////////////////////////////////////////////
-    ///////////  LETTURA DI UN BOOLEAN (yes/no)
+    // ------------------------------------------------------------
+    // INPUT DI STRINGHE
+    // ------------------------------------------------------------
     /**
-     * Legge un valore booleano chiedendo "yes/no".
-     * Accetta solo "yes" o "no" (case insensitive).
+     * Legge una stringa da console.
      *
-     * @param information Messaggio mostrato all’utente
-     * @return true se utente inserisce "yes", false se "no"
+     * @param message messaggio mostrato all'utente
+     * @return stringa inserita
      */
-    public static boolean getBoolean(String information){
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader keyboard = new BufferedReader(input);
-        System.out.println(information);
-
-        boolean result = true;
-        boolean error = true;
-
-        while (error) {
-            try {
-                System.out.println("yes/no");
-                String read = keyboard.readLine().toUpperCase();
-
-                if (read.equals("YES")) {
-                    result = true;
-                    error = false;
-                } else if (read.equals("NO")) {
-                    result = false;
-                    error = false;
-                } else {
-                    System.out.println("Input non valido. Inserire yes/no.");
-                }
-
-            } catch (Exception e) {
-                System.err.println("Errore: " + e );
-                error = true;
-            }
-        }
-        return result;
+    public static String StringPut(String message) {
+        System.out.println(message);
+        return readLine();
     }
 
-
-    //////////////////////////////////////////////////
-    ///////////  MENU DI SCELTA (opzioni)
+    // ------------------------------------------------------------
+    // INPUT DI BOOLEAN (yes/no)
+    // ------------------------------------------------------------
     /**
-     * Visualizza un menu numerato e ritorna l'indice dell’opzione scelta.
+     * Legge un valore booleano tramite input "yes/no".
      *
-     * @param args Elenco dinamico di opzioni (varargs)
-     * @return indice dell'opzione scelta (1-based)
+     * @param message messaggio mostrato all'utente
+     * @return true se l'utente inserisce "yes" o "y", false per "no" o "n"
      */
-    public static int menu (String... args){
-        int data = -1;
+    public static boolean getBoolean(String message) {
+        System.out.println(message + " (yes/no)");
 
-        // Ripete finché scelta non valida
-        while (data < 0 || data >= args.length){
-            for (int i = 0; i < args.length; i++){
-                System.out.println("[" + (i + 1) + "] " + args[i]);
+        while (true) {
+            String input = readLine().trim().toLowerCase();
+
+            switch (input) {
+                case "yes":
+                case "y":
+                    return true;
+
+                case "no":
+                case "n":
+                    return false;
+
+                default:
+                    System.err.println("Risposta non valida. Scrivi YES oppure NO.");
             }
-            data = IntPut("");
-            data--; // Converte input umano (1-based) in indice (0-based)
         }
-        return data;
     }
+
+    // ------------------------------------------------------------
+    // MENU INTERATTIVO
+    // ------------------------------------------------------------
+    /**
+     * Mostra un menu numerato e restituisce l’indice (0-based) della scelta fatta dall’utente.
+     *
+     * @param options elenco delle opzioni del menu
+     * @return indice dell'opzione scelta (0-based)
+     */
+    public static int menu(String... options) {
+
+        if (options.length == 0) {
+            throw new IllegalArgumentException("Il menu deve contenere almeno un'opzione.");
+        }
+
+        while (true) {
+
+            // Mostra le opzioni
+            for (int i = 0; i < options.length; i++) {
+                System.out.println("[" + (i + 1) + "] " + options[i]);
+            }
+
+            // Legge la scelta
+            int choice = IntPut("Seleziona un'opzione:");
+
+            // Controlla che la scelta sia valida
+            if (choice >= 1 && choice <= options.length) {
+                return choice - 1; // converte in indice 0-based
+            }
+
+            System.err.println("Scelta non valida. Riprova.");
+        }
+    }
+
 }
