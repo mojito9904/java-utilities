@@ -41,13 +41,13 @@ reading.
 # **Indice / Table of Contents**
 
 -   Italiano
-    -   Come usarla
-    -   Esempi di utilizzo
-    -   Menu interattivo
+    -   [Come usarla](#come-usarla)
+    -   [Esempi di utilizzo](#esempi-di-utilizzo)
+    -   [Menu interattivo](#menu-interattivo)
 -   English
-    -   How to use
-    -   Usage examples
-    -   Interactive menu
+    -   [How to use](#how-to-use)
+    -   [Usage examples](#usage-examples)
+    -   [Interactive menu](#interactive-menu)
 
 ------------------------------------------------------------------------
 
