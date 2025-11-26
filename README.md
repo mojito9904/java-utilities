@@ -1,7 +1,5 @@
 # Mojito Input Utility Class
 
-# **Indice / Table of Contents**
-
 -   Italiano
     -   [Descrione](#descrizione)
     -   [Come usarla](#come-usarla)
